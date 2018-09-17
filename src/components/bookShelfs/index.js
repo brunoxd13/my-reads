@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import * as BooksAPI from "../../api/BooksAPI";
 import { Tabs, message, Icon } from "antd";
+
 import BookShelf from "../bookShelf";
+import SearchTab from "../search";
+
 
 import "./index.css";
 
@@ -53,7 +56,7 @@ class BookShelfs extends Component {
 
   render() {
     return (
-      <Tabs defaultActiveKey="1">
+      <Tabs defaultActiveKey="0">
         <TabPane
           tab={
             <span>
@@ -63,7 +66,10 @@ class BookShelfs extends Component {
           }
           key="0"
         >
-          Tab 1
+          <SearchTab 
+            onMoveBook={this.onMoveBook}
+          />
+          
         </TabPane>
 
         <TabPane tab="Currently Reading" key="1">

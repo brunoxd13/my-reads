@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Card, Icon, Radio } from "antd";
+import { Card, Icon, Radio, Popconfirm } from "antd";
 
 import "./index.css";
 
@@ -47,7 +47,9 @@ class Book extends Component {
         }}
         actions={[
           <Icon type="info-circle" theme="outlined" onClick={{}} />,
-          <Icon type="delete" theme="outlined" onClick={this.deleteBook} />
+          <Popconfirm title="Are you sure delete this book?" onConfirm={this.deleteBook} okText="Yes" cancelText="No">
+            <Icon type="delete" theme="outlined" />
+          </Popconfirm>
         ]}
       >
         <Meta
