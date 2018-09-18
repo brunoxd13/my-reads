@@ -7,14 +7,18 @@ const Search = Input.Search;
 
 class SearchTab extends Component {
   state = {
-    books: []
+    booksSearch: []
   };
 
   onSearchBook = searchText => {
-    BooksAPI.search(searchText).then(() => {
-      this.setState({
-        books: books
+    console.log(`teste do search ${searchText}`)
+    BooksAPI.search(searchText).then(books => {
+      console.log(`teste do search ${books}`)
+
+      this.setState({  
+        booksSearch: books
       });
+      // console.log(`teste do search ${this.state.booksSearch}`)
     });
   };
 
@@ -24,12 +28,12 @@ class SearchTab extends Component {
         <Search
           style={{ width: "50%" }}
           placeholder="Input search text"
-          onSearch={value => console.log(value)}
+          onSearch={this.onSearchBook}
           size="large"
           enterButton
         />
 
-        <BookShelf books={{}} onMoveBook={this.props.onMoveBook} />
+        <BookShelf books={this.state.booksSearch} onMoveBook={this.props.onMoveBook} />
       </div>
     );
   }
