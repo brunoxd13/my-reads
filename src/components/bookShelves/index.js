@@ -6,11 +6,11 @@ import BookShelf from "../bookShelf";
 import SearchTab from "../search";
 
 
-import "./index.css";
+import "./styles.css";
 
 const TabPane = Tabs.TabPane;
 
-class BookShelfs extends Component {
+class BookShelves extends Component {
   state = {
     books: []
   };
@@ -96,4 +96,4 @@ class BookShelfs extends Component {
   }
 }
 
-export default BookShelfs;
+export default BookShelves;
