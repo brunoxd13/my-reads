@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Book from "../book";
 
-import "./index.css";
+import "./styles.css";
 
 class BookShelf extends Component {
   static propTypes = {

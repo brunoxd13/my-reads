@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Card, Icon, Radio, Popconfirm } from "antd";
 
-import "./index.css";
+import "./styles.css";
 
 const { Meta } = Card;
 
