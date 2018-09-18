@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as BooksAPI from "../../api/BooksAPI";
+import * as BooksAPI from "../../service/BooksAPI";
 import { Tabs, message, Icon } from "antd";
 
 import BookShelf from "../bookShelf";
@@ -69,7 +69,6 @@ class BookShelfs extends Component {
           <SearchTab 
             onMoveBook={this.onMoveBook}
           />
-          
         </TabPane>
 
         <TabPane tab="Currently Reading" key="1">
