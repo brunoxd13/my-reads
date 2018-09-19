@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { Tabs, Icon } from "antd";
 
 import BookShelf from "../bookShelf";
-import SearchTab from "../search";
+import SearchBooks from "../search";
+
 
 import "./styles.css";
 
@@ -23,7 +24,7 @@ class BookShelves extends Component {
     const { books, onMoveBook } = this.props;
 
     return (
-      <Tabs defaultActiveKey="0">
+      <Tabs defaultActiveKey="currentlyReading">
         <TabPane
           tab={
             <span>
@@ -33,26 +34,26 @@ class BookShelves extends Component {
           }
           key="0"
         >
-          <SearchTab 
+          <SearchBooks 
             onMoveBook={onMoveBook}
           />
         </TabPane>
 
-        <TabPane tab="Currently Reading" key="1">
+        <TabPane tab="Currently Reading" key="currentlyReading">
           <BookShelf
             books={this.booksByShelf("currentlyReading")}
             onMoveBook={onMoveBook}
           />
         </TabPane>
 
-        <TabPane tab="Want to Read" key="2">
+        <TabPane tab="Want to Read" key="wantToRead">
           <BookShelf
             books={this.booksByShelf("wantToRead")}
             onMoveBook={onMoveBook}
           />
         </TabPane>
 
-        <TabPane tab="Read" key="3">
+        <TabPane tab="Read" key="read">
           <BookShelf
             books={this.booksByShelf("read")}
             onMoveBook={onMoveBook}

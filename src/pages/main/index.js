@@ -1,10 +1,15 @@
 import React, { Component } from "react";
-import * as BooksAPI from "../../service/BooksAPI";
-
+import { Route } from "react-router-dom";
 import { message } from "antd";
-import "antd/dist/antd.css";
 
 import BookShelves from "../../components/bookShelves";
+import SearchBooks from "../../components/search";
+
+import * as BooksAPI from "../../service/BooksAPI";
+
+import "antd/dist/antd.css";
+
+import "./styles.css"
 
 class Main extends Component {
   state = {
@@ -46,12 +51,35 @@ class Main extends Component {
       .then(() => message.success("Book moved!", 2.5));
   };
 
+  onSearchBook = searchText => {
+    BooksAPI.search(searchText).then(books => {
+      this.setState({
+        booksSearch: books
+      });
+    });
+  };
+
   render() {
     return (
       <div>
-        <BookShelves 
-          onMoveBook={this.onMoveBook}
-          books={this.state.books} />
+        <div className="header">
+          
+        </div>
+
+        <div className="content">
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <BookShelves
+                books={this.state.books}
+                onMoveBook={this.onMoveBook}
+              />
+            )}
+          />
+
+          <Route path="/search" render={({ history }) => <SearchBooks />} />
+        </div>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
       </div>
     );
   }
