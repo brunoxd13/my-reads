@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Card, Icon, Radio, Popconfirm } from "antd";
+import { Card, Icon, Radio, Popconfirm, Rate} from "antd";
 
 import "./styles.css";
 
@@ -71,8 +71,12 @@ class Book extends Component {
           />
         </div>
 
+        <div style={{ justifyContent: "center", display: "flex", marginTop:10, marginBottom:10 }} >
+          <Rate disabled allowHalf defaultValue={book.averageRating} />
+        </div>
+        
         <p style={{ textAlign: "justify", height: 110 }}>
-          {limitDescription(this.props.book)}
+          {limitDescription(book)}
         </p>
 
         <RadioGroup
