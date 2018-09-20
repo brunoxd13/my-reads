@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Book from "../book";
 
-import { Card } from 'antd';
+import { Card } from "antd";
 
 import "./styles.css";
 
@@ -16,7 +16,7 @@ class BookSearch extends Component {
     const { books, onMoveBook } = this.props;
 
     return (
-      <Card title={"Results of search..."} style={{ margin:10 }}>
+      <Card title={"Results of search..."} style={{ margin: 10 }}>
         <div
           className="shelf"
           style={{
