@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Route, withRouter } from 'react-router-dom';
+import { Link, Route, withRouter } from "react-router-dom";
 import { message, Icon } from "antd";
 
 import BookShelves from "../../components/bookShelves";
 import SearchInput from "../../components/searchInput";
-import BookSearch from "../../components/search"
+import BookSearch from "../../components/search";
 import * as BooksAPI from "../../service/BooksAPI";
 
 import "antd/dist/antd.css";
@@ -74,7 +74,7 @@ class Main extends Component {
         booksSearch: booksMapped
       });
 
-      this.props.history.push('/search');
+      this.props.history.push("/search");
     });
   };
 
@@ -82,9 +82,16 @@ class Main extends Component {
     return (
       <div className="main-page">
         <div className="header">
-          <Icon style={{fontSize: "30px", float: "left", marginLeft:15 }} type="book" theme="outlined" />
-
-          <div style={{display: "flex", justifyContent: "center", width: "90%"}}>
+          <Link to="/" className="link-home">
+            <Icon
+              style={{ fontSize: "30px", float: "left", marginLeft: 15 }}
+              type="book"
+              theme="outlined"
+            />
+          </Link>
+          <div
+            style={{ display: "flex", justifyContent: "center", width: "90%" }}
+          >
             <SearchInput onSearchBook={this.onSearchBook} />
           </div>
         </div>
@@ -108,12 +115,12 @@ class Main extends Component {
               path="/search"
               render={({ history }) => (
                 <div>
-                  {this.state.booksSearch.length > 0 &&
+                  {this.state.booksSearch.length > 0 && (
                     <BookSearch
                       books={this.state.booksSearch}
                       onMoveBook={this.onMoveBook}
                     />
-                  }
+                  )}
                 </div>
               )}
             />
