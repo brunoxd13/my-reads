@@ -23,9 +23,9 @@ class BookShelf extends Component {
           style={{
             display: "flex",
             flexDirection: "row",
-            flexWrap: "wrap",
+            flexWrap: "nowrap",
             overflow: "auto",
-            justifyContent: "space-around"
+            justifyContent: "flex-start"
           }}
         >
           {books.map(book => (
