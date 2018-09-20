@@ -53,6 +53,11 @@ class Main extends Component {
   };
 
   onSearchBook = searchText => {
+    if (!searchText || searchText.length < 3 ) {
+      message.error("Error on search!", 2.5);
+      return;
+    }
+
     BooksAPI.search(searchText).then(books => {
       if (books.error) {
         message.error("Error on search!", 2.5);
@@ -75,6 +80,7 @@ class Main extends Component {
       });
 
       this.props.history.push("/search");
+      window.scrollTo(0,0);
     });
   };
 
