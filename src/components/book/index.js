@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Card, Icon, Radio, Popconfirm, Rate} from "antd";
+import { Card, Icon, Radio, Popconfirm, Rate } from "antd";
 
 import "./styles.css";
 
@@ -32,9 +32,12 @@ class Book extends Component {
   render() {
     const { book } = this.props;
 
-    const limitDescription = ({ description = ''}) => {
+    const limitDescription = ({ description = "" }) => {
       return description.substring(0, 150).concat("...");
     };
+
+    const defaultCoverImage =
+      "https://books.google.com/googlebooks/images/no_cover_thumb.gif";
 
     return (
       <Card
@@ -47,7 +50,12 @@ class Book extends Component {
         }}
         actions={[
           <Icon type="info-circle" theme="outlined" onClick={() => {}} />,
-          <Popconfirm title="Are you sure delete this book?" onConfirm={this.deleteBook} okText="Yes" cancelText="No">
+          <Popconfirm
+            title="Are you sure delete this book?"
+            onConfirm={this.deleteBook}
+            okText="Yes"
+            cancelText="No"
+          >
             <Icon type="delete" theme="outlined" />
           </Popconfirm>
         ]}
@@ -61,7 +69,9 @@ class Book extends Component {
         <div style={{ display: "flex", justifyContent: "center", margin: 10 }}>
           <img
             alt=""
-            src={book.imageLinks.thumbnail}
+            src={
+              book.imageLinks ? book.imageLinks.thumbnail : defaultCoverImage
+            }
             style={{
               marginLeft: "auto",
               marginRight: "auto",
@@ -71,10 +81,17 @@ class Book extends Component {
           />
         </div>
 
-        <div style={{ justifyContent: "center", display: "flex", marginTop:10, marginBottom:10 }} >
+        <div
+          style={{
+            justifyContent: "center",
+            display: "flex",
+            marginTop: 10,
+            marginBottom: 10
+          }}
+        >
           <Rate disabled allowHalf defaultValue={book.averageRating} />
         </div>
-        
+
         <p style={{ textAlign: "justify", height: 110 }}>
           {limitDescription(book)}
         </p>
