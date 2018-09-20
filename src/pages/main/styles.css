@@ -1,7 +1,14 @@
 .header
 {
     height:50px;
+    display: flex;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.75);
+    background-color: #666666;
 }
+
 .content
 {
     position:absolute;
@@ -9,5 +16,6 @@
     left:0px;
     right:0px;
     bottom:0px;
-    overflow-y:scroll;       
+    overflow-y:scroll;  
+    background-color: #e6e6e6;
 }
