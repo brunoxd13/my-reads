@@ -16,7 +16,7 @@ class BookShelves extends Component {
   }
 
   render() {
-    const { books, onMoveBook } = this.props;
+    const { onMoveBook } = this.props;
 
     return (
       <div className="container-book-shelves">
