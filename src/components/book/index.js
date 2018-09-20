@@ -32,13 +32,13 @@ class Book extends Component {
   render() {
     const { book } = this.props;
 
-    const limitDescription = ({ description }) => {
-      let descr = description.substring(0, 150);
-      return descr.substring(0, descr.lastIndexOf(" ")).concat("...");
+    const limitDescription = ({ description = ''}) => {
+      return description.substring(0, 150).concat("...");
     };
 
     return (
       <Card
+        type="inner"
         bordered={true}
         style={{
           width: 300,
@@ -46,7 +46,7 @@ class Book extends Component {
           boxShadow: "11px 10px 15px -12px rgba(0,0,0,0.75)"
         }}
         actions={[
-          <Icon type="info-circle" theme="outlined" onClick={{}} />,
+          <Icon type="info-circle" theme="outlined" onClick={() => {}} />,
           <Popconfirm title="Are you sure delete this book?" onConfirm={this.deleteBook} okText="Yes" cancelText="No">
             <Icon type="delete" theme="outlined" />
           </Popconfirm>
@@ -55,7 +55,7 @@ class Book extends Component {
         <Meta
           style={{ height: 80 }}
           title={[book.title, book.subtitle].filter(Boolean).join(" - ")}
-          description={book.authors.join(", ")}
+          description={book.authors && book.authors.join(", ")}
         />
 
         <div style={{ display: "flex", justifyContent: "center", margin: 10 }}>
