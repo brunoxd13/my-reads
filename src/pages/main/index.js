@@ -53,7 +53,7 @@ class Main extends Component {
   };
 
   onSearchBook = searchText => {
-    if (!searchText || searchText.length < 3 ) {
+    if (!searchText || searchText.length < 3) {
       message.error("Error on search!", 2.5);
       return;
     }
@@ -80,7 +80,6 @@ class Main extends Component {
       });
 
       this.props.history.push("/search");
-      window.scrollTo(0,0);
     });
   };
 
@@ -108,12 +107,10 @@ class Main extends Component {
               exact
               path="/"
               render={() => (
-                <div>
-                  <BookShelves
-                    books={this.state.books}
-                    onMoveBook={this.onMoveBook}
-                  />
-                </div>
+                <BookShelves
+                  books={this.state.books}
+                  onMoveBook={this.onMoveBook}
+                />
               )}
             />
 
