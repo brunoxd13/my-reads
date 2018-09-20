@@ -2,23 +2,17 @@ import React, { Component } from "react";
 import { Input } from "antd";
 
 import BookShelf from "../bookShelf";
+import SearchInput from "../searchInput";
 
 const Search = Input.Search;
 
 class SearchBooks extends Component {
-  state = {
-    booksSearch: []
-  };
-
   render() {
     return (
       <div style={{ justifyContent: "center", display: "flex" }}>
-        <Search
-          style={{ width: "50%" }}
-          placeholder="Input search text"
-          onSearch={this.props.onSearchBook}
-          size="large"
-          enterButton
+        <BookShelf
+          books={this.props.booksSearch}
+          onMoveBook={this.props.onMoveBook}
         />
       </div>
     );

@@ -3,17 +3,19 @@ import { Route } from "react-router-dom";
 import { message } from "antd";
 
 import BookShelves from "../../components/bookShelves";
-import SearchBooks from "../../components/search";
+import BookShelf from "../../components/bookShelf";
+import SearchInput from "../../components/searchInput";
 
 import * as BooksAPI from "../../service/BooksAPI";
 
 import "antd/dist/antd.css";
 
-import "./styles.css"
+import "./styles.css";
 
 class Main extends Component {
   state = {
-    books: []
+    books: [],
+    booksSearch: []
   };
 
   componentDidMount() {
@@ -53,33 +55,76 @@ class Main extends Component {
 
   onSearchBook = searchText => {
     BooksAPI.search(searchText).then(books => {
+      if (books.error) {
+        message.error("Error on search!", 2.5);
+        return;
+      }
+
+      const booksMapped = books.map(book => {
+        let stateBook = this.state.books.find(b => b.id === book.id);
+        if (stateBook) {
+          book.shelf = stateBook.shelf;
+        } else {
+          book.shelf = "none";
+        }
+
+        return book;
+      });
+
       this.setState({
-        booksSearch: books
+        booksSearch: booksMapped
       });
     });
   };
 
   render() {
     return (
-      <div>
+      <div className="main-page">
         <div className="header">
-          
+          <div
+            style={{
+              justifyContent: "center",
+              display: "flex",
+              paddingTop: 10
+            }}
+          >
+            <SearchInput onSearchBook={this.onSearchBook} />
+          </div>
         </div>
 
         <div className="content">
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <BookShelves
-                books={this.state.books}
-                onMoveBook={this.onMoveBook}
-              />
-            )}
-          />
+          <div style={{ backgroundColor: "#e6e6e6" }}>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <div>
+                  {this.state.booksSearch.length > 0 && (
+                    <BookShelf
+                      title="Result of search..."
+                      books={this.state.booksSearch}
+                      onMoveBook={this.onMoveBook}
+                    />
+                  )}
+                  <BookShelves
+                    books={this.state.books}
+                    onMoveBook={this.onMoveBook}
+                  />
+                </div>
+              )}
+            />
 
-          <Route path="/search" render={({ history }) => <SearchBooks />} />
-        </div>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+            <Route
+              path="/search"
+              render={({ history }) => (
+                <BookShelf
+                  books={this.state.booksSearch}
+                  onMoveBook={this.onMoveBook}
+                />
+              )}
+            />
+          </div>
+        </div>
       </div>
     );
   }
