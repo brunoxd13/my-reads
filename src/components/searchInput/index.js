@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Input } from "antd";
 
+import "./styles.css"
+
 const Search = Input.Search;
 
 class SearchInput extends Component {
@@ -12,10 +14,9 @@ class SearchInput extends Component {
   render() {
     return (
       <Search
-        style={{ width: "50%" }}
+        style={{ width: 500 }}
         placeholder="Input search text"
         onSearch={this.props.onSearchBook}
-        enterButton
       />
     );
   }
