@@ -1,22 +1,39 @@
 import React, { Component } from "react";
-import { Input } from "antd";
+import PropTypes from "prop-types";
+import Book from "../book";
 
-import BookShelf from "../bookShelf";
-import SearchInput from "../searchInput";
+import { Card } from 'antd';
 
-const Search = Input.Search;
+import "./styles.css";
 
-class SearchBooks extends Component {
+class BookSearch extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    onMoveBook: PropTypes.func.isRequired
+  };
+
   render() {
+    const { books, onMoveBook } = this.props;
+
     return (
-      <div style={{ justifyContent: "center", display: "flex" }}>
-        <BookShelf
-          books={this.props.booksSearch}
-          onMoveBook={this.props.onMoveBook}
-        />
-      </div>
+      <Card title={"Results of search..."} style={{ margin:10 }}>
+        <div
+          className="shelf"
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            overflow: "auto",
+            justifyContent: "space-around"
+          }}
+        >
+          {books.map(book => (
+            <Book key={book.id} book={book} onMoveBook={onMoveBook} />
+          ))}
+        </div>
+      </Card>
     );
   }
 }
 
-export default SearchBooks;
+export default BookSearch;
