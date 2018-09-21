@@ -1,11 +1,11 @@
 .card-shelf {
-  margin: 10;
+  margin: 10 !important;
 }
 
 .book-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: auto;
-  justify-content: space-around;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  overflow: auto !important;
+  justify-content: space-around !important;
 }

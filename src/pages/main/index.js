@@ -54,7 +54,7 @@ class Main extends Component {
   };
 
   onSearchBook = searchText => {
-    if (!searchText || searchText.length < 3) {
+    if (!searchText) {
       message.error("Search text invalid!", 2.5);
       return;
     }
