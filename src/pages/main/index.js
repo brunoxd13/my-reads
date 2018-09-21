@@ -4,10 +4,9 @@ import { message, Icon } from "antd";
 
 import BookShelves from "../../components/bookShelves";
 import SearchInput from "../../components/searchInput";
-import BookSearch from "../../components/search";
-import * as BooksAPI from "../../service/BooksAPI";
+import BookShelf from "../../components/bookShelf";
 
-import "antd/dist/antd.css";
+import * as BooksAPI from "../../service/BooksAPI";
 
 import "./styles.css";
 
@@ -27,19 +26,21 @@ class Main extends Component {
 
   moveBookApi(book) {
     BooksAPI.update(book, book.shelf).then(() => {
-      const booksChanged = this.state.books.map(b => {
-        if (b.id === book.id) {
-          b.shelf = book.shelf;
-        }
-
-        return b;
-      });
-
-      this.setState({
-        books: booksChanged
-      });
+      this.setState(state => ({
+        books: state.books.filter(b => b.id !== book.id).concat([book])
+      }));
     });
   }
+
+  /*
+  Merge the books of search with my book's.
+  */
+  mergeBooks = books => {
+    return books.map(book => {
+      const found = this.state.books.find(b => b.id === book.id);
+      return found ? found : book;
+    });
+  };
 
   /*
   Open the loading message and after process de api, 
@@ -54,7 +55,7 @@ class Main extends Component {
 
   onSearchBook = searchText => {
     if (!searchText || searchText.length < 3) {
-      message.error("Error on search!", 2.5);
+      message.error("Search text invalid!", 2.5);
       return;
     }
 
@@ -64,19 +65,8 @@ class Main extends Component {
         return;
       }
 
-      const booksMapped = books.map(book => {
-        let stateBook = this.state.books.find(b => b.id === book.id);
-        if (stateBook) {
-          book.shelf = stateBook.shelf;
-        } else {
-          book.shelf = "none";
-        }
-
-        return book;
-      });
-
       this.setState({
-        booksSearch: booksMapped
+        booksSearch: this.mergeBooks(books)
       });
 
       this.props.history.push("/search");
@@ -89,7 +79,7 @@ class Main extends Component {
         <div className="header">
           <Link to="/" className="link-home">
             <Icon
-              style={{ fontSize: "30px", float: "left", marginLeft: 15 }}
+              className="icon-header"
               type="book"
               theme="outlined"
             />
@@ -119,7 +109,9 @@ class Main extends Component {
               render={({ history }) => (
                 <div>
                   {this.state.booksSearch.length > 0 && (
-                    <BookSearch
+                    
+                    <BookShelf
+                      title="Results of search.."
                       books={this.state.booksSearch}
                       onMoveBook={this.onMoveBook}
                     />

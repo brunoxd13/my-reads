@@ -16,9 +16,9 @@ class BookShelf extends Component {
     const { title, books, onMoveBook } = this.props;
 
     return (
-      <Card title={title} style={{ margin: 10 }}>
+      <Card className="card-shelf" title={title} style={{ margin: 10 }}>
         <div
-          className="shelf"
+          className="book-container"
           style={{
             display: "flex",
             flexDirection: "row",

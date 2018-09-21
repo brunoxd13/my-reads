@@ -32,22 +32,14 @@ class Book extends Component {
   render() {
     const { book } = this.props;
 
-    const limitDescription = ({ description = "" }) => {
-      return description.substring(0, 150).concat("...");
-    };
-
     const defaultCoverImage =
       "https://books.google.com/googlebooks/images/no_cover_thumb.gif";
 
     return (
       <Card
+        className="card-book"
         type="inner"
         bordered={true}
-        style={{
-          width: 300,
-          margin: 15,
-          boxShadow: "11px 10px 15px -12px rgba(0,0,0,0.75)"
-        }}
         actions={[
           <Icon type="info-circle" theme="outlined" onClick={() => {}} />,
           <Popconfirm
@@ -66,39 +58,27 @@ class Book extends Component {
           description={book.authors && book.authors.join(", ")}
         />
 
-        <div style={{ display: "flex", justifyContent: "center", margin: 10 }}>
+        <div className="container-book-img">
           <img
+            className="book-img"
             alt=""
             src={
               book.imageLinks ? book.imageLinks.thumbnail : defaultCoverImage
             }
-            style={{
-              marginLeft: "auto",
-              marginRight: "auto",
-              width: "200px",
-              height: "280px"
-            }}
           />
         </div>
 
-        <div
-          style={{
-            justifyContent: "center",
-            display: "flex",
-            marginTop: 10,
-            marginBottom: 10
-          }}
-        >
+        <div className="container-rate">
           <Rate disabled allowHalf defaultValue={book.averageRating} />
         </div>
 
-        <p style={{ textAlign: "justify", height: 110 }}>
-          {limitDescription(book)}
+        <p className="book-description">
+          {book.description && book.description.substring(0, 150).concat("...")}
         </p>
 
         <RadioGroup
+          className="book-select"
           size="small"
-          style={{ justifyContent: "center", display: "flex" }}
           defaultValue={book.shelf}
           onChange={this.moveBook}
         >
