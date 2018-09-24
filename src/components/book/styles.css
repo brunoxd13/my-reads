@@ -1,35 +1,35 @@
 .card-book {
-  width: 300px !important;
-  margin: 15px !important;
-  box-shadow: 11px 10px 15px -12px rgba(0, 0, 0, 0.75) !important;
+  width: 300px;
+  margin: 15px;
+  box-shadow: 11px 10px 15px -12px rgba(0, 0, 0, 0.75);
 }
 
 .container-book-img {
-  display: flex !important;
-  justify-content: center !important;
-  margin: 10px !important;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }
 
 .book-img {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 200px !important;
-  height: 280px !important;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 280px;
 }
 
 .container-rate {
-  justify-content: center !important;
-  display: flex !important;
-  margin-top: 10px !important;
-  margin-bottom: 10px !important;
+  justify-content: center;
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .book-description {
-  text-align: justify !important;
-  height: 110px !important;
+  text-align: justify;
+  height: 110px;
 }
 
 .book-select {
-  justify-content: center !important;
-  display: flex !important;
+  justify-content: center;
+  display: flex;
 }

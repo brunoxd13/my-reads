@@ -17,16 +17,7 @@ class BookShelf extends Component {
 
     return (
       <Card className="card-shelf" title={title} style={{ margin: 10 }}>
-        <div
-          className="book-container"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "nowrap",
-            overflow: "auto",
-            justifyContent: "flex-start"
-          }}
-        >
+        <div className="book-container">
           {books.map(book => (
             <Book key={book.id} book={book} onMoveBook={onMoveBook} />
           ))}
