@@ -73,6 +73,7 @@ class Main extends Component {
 
   onSearchBook = searchText => {
     if (!searchText) {
+      this.props.history.push("/");
       return;
     }
 
