@@ -24,13 +24,16 @@ class Main extends Component {
     });
   }
 
-  moveBookApi(book) {
+  /*
+  Filters all books except the one that underwent the change and adds the changed.
+  */
+  moveBookApi = book => {
     BooksAPI.update(book, book.shelf).then(() => {
       this.setState(state => ({
         books: state.books.filter(b => b.id !== book.id).concat([book])
       }));
     });
-  }
+  };
 
   /*
   Merge the books of search with my book's.
@@ -50,18 +53,13 @@ class Main extends Component {
     message
       .loading("Moving book", 1)
       .then(this.moveBookApi(book))
-      .then(() => message.success("Book moved!", 2.5));
+      .then(() => message.success("Book moved!", 1));
   };
 
-  onSearchBook = searchText => {
-    if (!searchText) {
-      message.error("Search text invalid!", 2.5);
-      return;
-    }
-
+  searchBookApi = searchText => {
     BooksAPI.search(searchText).then(books => {
       if (books.error) {
-        message.error("Error on search!", 2.5);
+        message.error("No result on search!", 1);
         return;
       }
 
@@ -73,16 +71,22 @@ class Main extends Component {
     });
   };
 
+  onSearchBook = searchText => {
+    if (!searchText) {
+      return;
+    }
+
+    message
+      .loading("Searching for books", 0.7)
+      .then(this.searchBookApi(searchText));
+  };
+
   render() {
     return (
       <div className="main-page">
         <div className="header">
           <Link to="/" className="link-home">
-            <Icon
-              className="icon-header"
-              type="book"
-              theme="outlined"
-            />
+            <Icon className="icon-header" type="book" theme="outlined" />
           </Link>
           <div
             style={{ display: "flex", justifyContent: "center", width: "90%" }}
@@ -109,9 +113,8 @@ class Main extends Component {
               render={({ history }) => (
                 <div>
                   {this.state.booksSearch.length > 0 && (
-                    
                     <BookShelf
-                      title="Results of search.."
+                      title="Results of search..."
                       books={this.state.booksSearch}
                       onMoveBook={this.onMoveBook}
                     />
