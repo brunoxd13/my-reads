@@ -53,6 +53,7 @@ class Book extends Component {
         ]}
       >
         <Meta
+          className="book-meta-info"
           style={{ height: 80 }}
           title={[book.title, book.subtitle].filter(Boolean).join(" - ")}
           description={book.authors && book.authors.join(", ")}

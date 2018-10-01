@@ -18,9 +18,7 @@ class BookShelf extends Component {
     return (
       <Card className="card-shelf" title={title} style={{ margin: 10 }}>
         <div className="book-container">
-          {books.map(book => (
-            <Book key={book.id} book={book} onMoveBook={onMoveBook} />
-          ))}
+          {books.map(book => <Book book={book} onMoveBook={onMoveBook} />)}
         </div>
       </Card>
     );
