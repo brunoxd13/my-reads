@@ -21,18 +21,21 @@ class BookShelves extends Component {
     return (
       <div className="container-book-shelves">
         <BookShelf
+          className="shelf-reading"
           title="Currently Reading"
           books={this.booksByShelf("currentlyReading")}
           onMoveBook={onMoveBook}
         />
 
         <BookShelf
+          className="shelf-want-read"
           title="Want to Read"
           books={this.booksByShelf("wantToRead")}
           onMoveBook={onMoveBook}
         />
 
         <BookShelf
+          className="shelf-read"
           title="Read"
           books={this.booksByShelf("read")}
           onMoveBook={onMoveBook}

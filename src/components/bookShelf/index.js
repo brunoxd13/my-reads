@@ -8,6 +8,7 @@ import "./styles.css";
 
 class BookShelf extends Component {
   static propTypes = {
+    title: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
     onMoveBook: PropTypes.func.isRequired
   };
@@ -16,9 +17,11 @@ class BookShelf extends Component {
     const { title, books, onMoveBook } = this.props;
 
     return (
-      <Card className="card-shelf" title={title} style={{ margin: 10 }}>
+      <Card className="card-shelf" title={title}>
         <div className="book-container">
-          {books.map(book => <Book book={book} onMoveBook={onMoveBook} />)}
+          {books.map(book => (
+            <Book key={book.id} book={book} onMoveBook={onMoveBook} />
+          ))}
         </div>
       </Card>
     );

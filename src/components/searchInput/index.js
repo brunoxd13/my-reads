@@ -10,23 +10,22 @@ class SearchInput extends Component {
   static propTypes = {
     onSearchBook: PropTypes.func.isRequired
   };
-  
-  onChange = (e) =>{
+
+  onChange = e => {
     const query = e.target.value;
-    
-    if(this.timeout) clearTimeout(this.timeout);
-    
+
+    if (this.timeout) clearTimeout(this.timeout);
+
     this.timeout = setTimeout(() => {
       this.props.onSearchBook(query);
     }, 500);
-  }
+  };
 
   render() {
     return (
       <Search
-        style={{ width: 500 }}
+        className="search-input"
         placeholder="Input search text"
-        onSearch={this.props.onSearchBook}
         onChange={this.onChange}
       />
     );

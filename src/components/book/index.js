@@ -62,7 +62,7 @@ class Book extends Component {
         <div className="container-book-img">
           <img
             className="book-img"
-            alt=""
+            alt="Book Image"
             src={
               book.imageLinks ? book.imageLinks.thumbnail : defaultCoverImage
             }
@@ -70,7 +70,12 @@ class Book extends Component {
         </div>
 
         <div className="container-rate">
-          <Rate disabled allowHalf defaultValue={book.averageRating} />
+          <Rate
+            className="book-rate"
+            disabled
+            allowHalf
+            defaultValue={book.averageRating}
+          />
         </div>
 
         <p className="book-description">
