@@ -12,13 +12,35 @@ describe("SearchInput", () => {
     expect(shallow(<SearchInput {...props} />));
   });
 
-  it("search a book", () => {
+  it("Search a book", () => {
+    jest.useFakeTimers();
+
     const wrapper = shallow(<SearchInput {...props} />);
 
     wrapper
       .find(".search-input")
       .simulate("change", { target: { value: "astronomy" } });
 
+    jest.runAllTimers();
+
     expect(onSearchBook).toHaveBeenCalledTimes(1);
+  });
+
+  it("Search a book after other one", () => {
+    jest.useFakeTimers();
+
+    const wrapper = shallow(<SearchInput {...props} />);
+
+    wrapper
+      .find(".search-input")
+      .simulate("change", { target: { value: "astronomy" } });
+
+    jest.runAllTimers();
+
+    wrapper
+      .find(".search-input")
+      .simulate("change", { target: { value: "astronomy" } });
+
+    expect(onSearchBook).toHaveBeenCalledTimes(2);
   });
 });
