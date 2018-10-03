@@ -41,7 +41,9 @@ class Book extends Component {
         type="inner"
         bordered={true}
         actions={[
-          <Icon type="info-circle" theme="outlined" onClick={() => {}} />,
+          <a href={book.previewLink} target="_blank">
+            <Icon type="info-circle" theme="outlined" />
+          </a>,
           <Popconfirm
             title="Are you sure delete this book?"
             onConfirm={this.deleteBook}
@@ -62,7 +64,7 @@ class Book extends Component {
         <div className="container-book-img">
           <img
             className="book-img"
-            alt="Book Image"
+            alt="Book"
             src={
               book.imageLinks ? book.imageLinks.thumbnail : defaultCoverImage
             }
