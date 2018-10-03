@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import SearchInput from "../index";
+import SearchInput from "../components/searchInput";
 
 describe("SearchInput", () => {
   const onSearchBook = jest.fn();

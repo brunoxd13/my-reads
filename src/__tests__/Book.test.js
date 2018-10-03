@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Book from "../index";
+import Book from "../components/book";
 
 describe("Book", () => {
   const onMoveBook = jest.fn();

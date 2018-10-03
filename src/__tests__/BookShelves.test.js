@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import BookShelves from "../index";
+import BookShelves from "../components/bookShelves";
 
 describe("BookShelves", () => {
   const props = {

@@ -1,7 +1,7 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { shallow, mount } from "enzyme";
-import Main from "../index";
+import Main from "../pages/main";
 
 describe("Main page", () => {
   it("Render the main component with shallow", () => {
