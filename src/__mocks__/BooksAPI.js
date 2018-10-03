@@ -191,6 +191,26 @@ const books = [
   }
 ];
 
-const mockAPI = url => new Promise((resolve, reject) => {});
+function mockAPI () {
+  const getAll = () =>{
+    console.log("get all mock");
+    
+    return Promise.resolve( books );
+  }
+
+  const get = () =>{
+    return Promise.resolve( books[1] );
+  }
+
+  const update = () =>{
+    
+  }
+
+  const search = () =>{
+    
+  }
+
+  return { getAll, get, update, search };
+} 
 
 export default mockAPI;
