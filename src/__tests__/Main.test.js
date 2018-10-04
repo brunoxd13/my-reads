@@ -223,27 +223,105 @@ describe("Main page", () => {
     );
   });
 
-  it("Search a book after other one", () => {
+  it("Search a book at main page", async () => {
+    const wrapper = mount(
+      <MemoryRouter initialEntries={["/"]}>
+        <Main />
+      </MemoryRouter>
+    );
+
     jest.useFakeTimers();
 
+    const onChangeInput = wrapper
+      .find(".search-input")
+      .first()
+      .props().onChange;
+
+    onChangeInput({ target: { value: "astronomy" } });
+
+    jest.runAllTimers();
+  });
+
+  it("Search a book at search page", async () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={["/search"]}>
         <Main />
       </MemoryRouter>
     );
 
-    console.log(wrapper.find(".search-input").debug());
+    jest.useFakeTimers();
 
-    wrapper
+    const onChangeInput = wrapper
       .find(".search-input")
-      .at(0)
-      .simulate("change", { target: { value: "astronomy" } });
+      .first()
+      .props().onChange;
+
+    onChangeInput({ target: { value: "astronomy" } });
 
     jest.runAllTimers();
+  });
 
-    wrapper
+  it("Search a book and back to home", async () => {
+    const wrapper = mount(
+      <MemoryRouter initialEntries={["/"]}>
+        <Main />
+      </MemoryRouter>
+    );
+
+    jest.useFakeTimers();
+
+    const onChangeInput = wrapper
       .find(".search-input")
-      .at(0)
-      .simulate("change", { target: { value: "astronomy" } });
+      .first()
+      .props().onChange;
+
+    onChangeInput({ target: { value: "" } });
+
+    jest.runAllTimers();
+  });
+
+  it("Search a book and no result found", async () => {
+    const wrapper = mount(
+      <MemoryRouter initialEntries={["/"]}>
+        <Main />
+      </MemoryRouter>
+    );
+
+    jest.useFakeTimers();
+
+    const onChangeInput = wrapper
+      .find(".search-input")
+      .first()
+      .props().onChange;
+
+    onChangeInput({ target: { value: "sauydgasyu" } });
+
+    jest.runAllTimers();
+  });
+
+  it("Move a book", async () => {
+    const wrapper = mount(
+      <MemoryRouter initialEntries={["/"]}>
+        <Main />
+      </MemoryRouter>
+    );
+
+    // jest.useFakeTimers();
+
+    console.log(
+      wrapper
+        .find(".book-card")
+        .first()
+        .debug()
+    );
+
+    // const onChangeInput = wrapper
+    //   .find(".book-select")
+    //   .first()
+    //   .props().onChange;
+
+    // onChangeInput({ target: { value: "read" } });
+
+    // jest.runAllTimers();
   });
 });
