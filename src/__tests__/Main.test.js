@@ -1,9 +1,11 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { shallow, mount } from "enzyme";
+import { shallow, mount, render } from "enzyme";
+import sinon, { stub } from "sinon";
+
 import Main from "../pages/main";
 
-const books = [
+const myBooks = [
   {
     title: "The Linux Command Line",
     subtitle: "A Complete Introduction",
@@ -197,7 +199,9 @@ const books = [
 ];
 
 describe("Main page", () => {
-  fetch.mockResponse(JSON.stringify({ books: books }));
+  beforeEach(() => {
+    fetch.mockResponse(JSON.stringify({ books: myBooks }));
+  });
 
   it("Render the main component with shallow", async () => {
     expect(shallow(<Main />));
@@ -300,28 +304,27 @@ describe("Main page", () => {
   });
 
   it("Move a book", async () => {
+    /*const promise = Promise.resolve(myBooks);
+    // sinon.stub(global, "fetch", () => promise);
+    // stub(global, "fetch").callsFake(() => promise );
+
     const wrapper = mount(
       <MemoryRouter initialEntries={["/"]}>
         <Main />
       </MemoryRouter>
     );
+    console.log("1");
 
-    // jest.useFakeTimers();
+    return promise
+      .then(() => {
+        console.log("12");
+        // expect(wrapper.state()).to.have.property("books", true);
 
-    console.log(
-      wrapper
-        .find(".book-card")
-        .first()
-        .debug()
-    );
-
-    // const onChangeInput = wrapper
-    //   .find(".book-select")
-    //   .first()
-    //   .props().onChange;
-
-    // onChangeInput({ target: { value: "read" } });
-
-    // jest.runAllTimers();
+        wrapper.update();
+      })
+      .then(() => {
+        console.log("123");
+        // expect(wrapper.text()).to.contain("data is ready");
+      });*/
   });
 });
