@@ -27,6 +27,7 @@ class SearchInput extends Component {
         className="search-input"
         placeholder="Input search text"
         onChange={this.onChange}
+        onSearch={this.props.onSearchBook}
       />
     );
   }
