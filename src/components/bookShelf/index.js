@@ -29,15 +29,13 @@ class BookShelf extends Component {
         className="card-shelf"
         title={title}
         extra={
-          this.state.visible ? (
-            <Button onClick={this.showOrHideBooks}>
+          <Button onClick={this.showOrHideBooks}>
+            {this.state.visible ? (
               <Icon type="up" theme="outlined" />
-            </Button>
-          ) : (
-            <Button onClick={this.showOrHideBooks}>
+            ) : (
               <Icon type="down" theme="outlined" />
-            </Button>
-          )
+            )}
+          </Button>
         }
       >
         <div className="book-container">
