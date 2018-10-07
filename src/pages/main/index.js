@@ -115,7 +115,7 @@ class Main extends Component {
                 <div>
                   {this.state.booksSearch.length > 0 && (
                     <BookShelf
-                      title="Results of search..."
+                      title="Results of search ..."
                       books={this.state.booksSearch}
                       onMoveBook={this.onMoveBook}
                     />
