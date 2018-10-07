@@ -19,16 +19,17 @@ I opted to develop the project to create my layout from scratch and not use the 
 
 ### Prerequisites
 
-The project can be built with npm or yarn, so choose one of the approach bellow in case you don't have any installed on your system. 
+To perform the project installation you need to have a package manager installed in your environment, such as the following:
+* [Yarn](https://yarnpkg.com/pt-BR/)
+* [Npm](https://www.npmjs.com)
 
-### Installing
+## Installing process
+### Cloning the porject
 ```
 git clone https://github.com/brunoxd13/my-reads.git
 cd my-reads
 ```
-
-Then install dependencies and run:
-
+### Instaling the project
 ```
 yarn install
 yarn start
@@ -96,3 +97,7 @@ Packages used for the development of the project:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+## Credits
+Images:
+* [Icon Finder](https://www.iconfinder.com)
