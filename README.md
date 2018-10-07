@@ -1,9 +1,9 @@
+[![Heroku](https://heroku-badge.herokuapp.com/?app=my-reads-bruno)]
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/brunoxd13/my-reads/master/public/favicon.ico" alt="logo" width="100" />
 </p>
 <br>
-
-[![Heroku](https://heroku-badge.herokuapp.com/?app=my-reads-bruno)]
 
 This is the first graduation project for the [React Nanodegree Program](https://br.udacity.com/course/react-nanodegree--nd019) from Udacity. 
 
