@@ -1,4 +1,5 @@
 [![Heroku](https://heroku-badge.herokuapp.com/?app=my-reads-bruno)]
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/992c1f98fa284c77ad9f371d83f33c36)](https://app.codacy.com/app/brunoxd13/my-reads?utm_source=github.com&utm_medium=referral&utm_content=brunoxd13/my-reads&utm_campaign=Badge_Grade_Dashboard)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/brunoxd13/my-reads/master/public/favicon.ico" alt="logo" width="100" />
