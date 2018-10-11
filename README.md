@@ -13,6 +13,9 @@ I opted to develop the project to create my layout from scratch and not use the 
 
 
 ## Demo
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/992c1f98fa284c77ad9f371d83f33c36)](https://app.codacy.com/app/brunoxd13/my-reads?utm_source=github.com&utm_medium=referral&utm_content=brunoxd13/my-reads&utm_campaign=Badge_Grade_Dashboard)
+
 <a href="http://my-reads-bruno.herokuapp.com"><strong>🎮 Play with the demo</strong></a>
 
 ## Getting Started
