@@ -1,6 +1,6 @@
 [![REACT nanodegree](https://img.shields.io/badge/udacity-REACTND-02b3e4.svg?style=flat)](https://www.udacity.com/course/react-nanodegree--nd019)
 [![BCH compliance](https://bettercodehub.com/edge/badge/brunoxd13/my-reads?branch=master)](https://bettercodehub.com/)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=my-reads-bruno)]
+[![Heroku](https://heroku-badge.herokuapp.com/?app=my-reads-bruno)](https://heroku.com)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/992c1f98fa284c77ad9f371d83f33c36)](https://app.codacy.com/app/brunoxd13/my-reads?utm_source=github.com&utm_medium=referral&utm_content=brunoxd13/my-reads&utm_campaign=Badge_Grade_Dashboard)
 
 <p align="center">
