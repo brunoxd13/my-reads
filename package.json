@@ -16,18 +16,25 @@
     "sinon": "^7.3.2"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^4.0.4",
+    "@testing-library/react": "^8.0.4",
     "babel-preset-env": "*",
     "babel-preset-react": "*",
+    "cypress": "^3.3.2",
+    "cypress-cucumber-preprocessor": "^1.12.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "enzyme-to-json": "^3.3.4",
+    "jest-dom": "^3.5.0",
     "jest-fetch-mock": "^2.1.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "eject": "react-scripts eject",
-    "test": "react-scripts test --env=jsdom"
+    "test": "react-scripts test --env=jsdom",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "browserslist": {
     "production": [
@@ -40,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }
