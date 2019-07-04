@@ -41,20 +41,26 @@ class Book extends Component {
         type="inner"
         bordered={true}
         actions={[
-          <a href={book.previewLink} target="_blank">
+          <a
+            data-testid="book-info-preview"
+            href={book.previewLink}
+            target="_blank"
+          >
             <Icon type="info-circle" theme="outlined" />
           </a>,
           <Popconfirm
+            data-testid="popup-delete"
             title="Are you sure delete this book?"
             onConfirm={this.deleteBook}
             okText="Yes"
             cancelText="No"
           >
-            <Icon type="delete" theme="outlined" />
+            <Icon data-testid="btn-delete" type="delete" theme="outlined" />
           </Popconfirm>
         ]}
       >
         <Meta
+          data-testid="book-meta"
           className="book-meta-info"
           style={{ height: 80 }}
           title={[book.title, book.subtitle].filter(Boolean).join(" - ")}
@@ -71,7 +77,7 @@ class Book extends Component {
           />
         </div>
 
-        <div className="container-rate">
+        <div data-testid="container-rate" className="container-rate">
           <Rate
             className="book-rate"
             disabled
@@ -80,8 +86,11 @@ class Book extends Component {
           />
         </div>
 
-        <p className="book-description">
-          {book.description && book.description.substring(0, 150).concat("...")}
+        <p data-testid="book-description" className="book-description">
+          {book.description &&
+            (book.description.length > 150
+              ? book.description.substring(0, 150).concat("...")
+              : book.description)}
         </p>
 
         <RadioGroup
